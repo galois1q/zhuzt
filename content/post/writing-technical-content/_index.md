@@ -11,3 +11,15 @@ banner:
   caption: ''
   image: ''
 ---
+
+**test**
+
+hello world
+
+
+\begin{equation}
+  \frac{1}{2},\alpha,\mathrm{d},\int 
+\end{equation}
+
+
+$e^x+a\cdot \frac{x}{b}$
