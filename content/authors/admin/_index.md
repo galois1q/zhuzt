@@ -6,7 +6,7 @@ title: Zhuzt
 superuser: true
 
 # Role/position
-role: Students in Physics College
+role: Student in Physics College
 
 # Status emoji
 status:
@@ -18,7 +18,7 @@ organizations:
     url: ''
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am an undergraduated students majoring in physics...
+bio: I am an undergraduated students majoring in physics, now being interested in renormalization group theory,topological order and so on.
 
 interests:
 - Condensed Matter Theory
@@ -45,13 +45,13 @@ interests:
 social:
   - icon: envelope
     icon_pack: fas
-    link: 'about/#contact' # For a direct email link, use "mailto:test@example.org".
-  - icon: twitter
-    icon_pack: fab
-    # link: https://twitter.com/wowchemy
-  - icon: instagram
-    icon_pack: fab
-    # link: https://instagram.com/geocushen
+    link: "zhuzt314@gmail.com" # For a direct email link, use "mailto:test@example.org".
+  # - icon: twitter
+  #   icon_pack: fab
+  #   link: https://twitter.com/wowchemy
+  # - icon: instagram
+  #   icon_pack: fab
+  # link: https://instagram.com/geocushen
 # Uncomment below for Github link
   - icon: github
     icon_pack: fab
@@ -64,7 +64,7 @@ social:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "zhuzt314@gmail.com"
+# email: "zhuzt314@gmail.com"
 ---
 
 <!-- Alice Bighetti is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
