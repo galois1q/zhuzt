@@ -9,8 +9,8 @@ superuser: true
 role: Student in Physics College
 
 # Status emoji
-status:
-  icon: 
+# status:
+#   icon: 
 
 # Organizations/Affiliations
 organizations:
