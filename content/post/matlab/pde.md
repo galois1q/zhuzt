@@ -1,5 +1,5 @@
 ---
-title: '二阶pde算法'
+title: '二阶pde数值求解算法'
 subtitle: 
 summary: '一些计算物理总结'
 authors:
@@ -20,9 +20,9 @@ image:
 ## 二阶偏微分方程分类
 
  
-\begin{equation}
+{{< math >}}$$
 A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0
-\end{equation}
+$${{< math >}}
  
 
 - 若 $B^2-AC<0$,椭圆型；
@@ -40,33 +40,33 @@ A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0
 主要考虑Poisson方程和Laplace方程:
 
  
-\begin{equation}
+{{< math >}}$$
 -[\frac{{{\partial ^2}}}{{\partial {x^2}}} + \frac{{{\partial ^2}}}{{\partial {y^2}}}]\phi  = S(x,y)
-\end{equation}
+$${{< math >}}
  
 
 
 区域离散化：
  
-\begin{equation}
+{{< math >}}$$
 -[{\phi_{i + 1,j}} + {\phi_{i - 1,j}} + {\phi_{i,j + 1}} + {\phi_{i,j - 1}} - 4{\phi_{ij}}] = {h^2}{S_{ij}}
-\end{equation}
+$${{< math >}}
  
 或表示为：
 
  
-\begin{equation} 
--[{(\delta_i^2\phi )_{ij}} + {(\delta_j^2\phi )_{ij}}] = {h^2}{S_{ij}}
-\end{equation}
+{{< math >}}$$ 
+-[({\delta_i^2}\phi)_ {ij} + {(\delta_{j}^{2}\phi)_ {ij}}] = {h^2}{S_{ij}}
+$${{< math >}}
  
 
  
-\begin{equation}
+{{< math >}}$$
 \begin{array}{l}
-{(\delta_i^2\phi )_{ij}} \equiv {\phi_{i + 1,j}} + {\phi_{i - 1,j}} - 2{\phi_{ij}}\\
-{(\delta_j^2\phi )_{ij}} \equiv {\phi_{i,j + 1}} + {\phi_{i,j - 1}} - 2{\phi_{ij}}
+{(\delta_i^2\phi )_ {ij}} \equiv {\phi_{i + 1,j}} + {\phi_{i - 1,j}} - 2{\phi_{ij}}\\
+{(\delta_j^2\phi )_ {ij}} \equiv {\phi_{i,j + 1}} + {\phi_{i,j - 1}} - 2{\phi_{ij}}
 \end{array} 
-\end{equation}
+$${{< math >}}
  
 
 正方形边界代码示例
@@ -90,9 +90,9 @@ u(2:N,2:M)=1/(2*pi);% 边界平均值为1/(2*pi)以初始化内点
 #### Jacobi迭代法
 
  
-\begin{equation}
+{{< math >}}$$
 \varphi_{ij}^{n + 1}=\frac{1}{4}[\varphi_{i - 1,j}^{n} + \varphi_{i + 1,j}^n + \varphi_{i,j - 1}^{n} + \varphi_{i,j + 1}^n + {h^2}S_{ij}^n]
-\end{equation}
+$${{< math >}}
  
 
 ```matlab
@@ -114,9 +114,9 @@ end
 ```
 #### Gauss-Seidal法
  
-\begin{equation}
+{{< math >}}$$
 \varphi_{ij}^{n + 1} = (1 - \omega )\varphi_{ij}^n + \frac{\omega }{4}[\varphi_{i - 1,j}^{n + 1} + \varphi_{i + 1,j}^n + \varphi_{i,j - 1}^{n + 1} + \varphi_{i,j + 1}^n + {h^2}S_{ij}^n]
-\end{equation}
+$${{< math >}}
  
 
 其中 $0<\omega<2$，最佳值需要依据情况确定。
@@ -156,7 +156,7 @@ end
 
 一维扩散方程：
  
-\begin{equation}\frac{{\partial \Phi }}{{\partial t}} = \frac{{{\partial ^2}\Phi }}{{\partial {x^2}}} + S(x,t)\end{equation}
+{{< math >}}$$\frac{{\partial \Phi }}{{\partial t}} = \frac{{{\partial ^2}\Phi }}{{\partial {x^2}}} + S(x,t)$${{< math >}}
  
 
 一维扩散问题边界示例
@@ -175,26 +175,26 @@ y((N+1)/2:N,1) = 2*(1-x((N+1)/2:N));
 
 #### 显式差分
  
-\begin{equation}\Phi_i^{n + 1} = r\Phi_{i + 1}^n + (1 - 2r)\Phi_i^n + r\Phi_{i - 1}^n + S_i^n\Delta t,\quad r=\frac{\Delta t}{h^{2}}\end{equation}
+{{< math >}}$$\Phi_i^{n + 1} = r\Phi_{i + 1}^n + (1 - 2r)\Phi_i^n + r\Phi_{i - 1}^n + S_i^n\Delta t,\quad r=\frac{\Delta t}{h^{2}}$${{< math >}}
  
 
 只有当 $r<\frac{1}{2}$时算法才稳定。
 
 若记
  
-\begin{equation}{(\delta_{}^2\Phi_{}^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n\end{equation}
+{{< math >}}$${(\delta_{}^2\Phi_{}^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n$${{< math >}}
  
 
 则显式差分也可写成：
  
-\begin{equation}\Phi_{}^{n + 1} = (1 - H\Delta t)\Phi_{}^n + S_{}^n\Delta t\end{equation}
+{{< math >}}$$\Phi_{}^{n + 1} = (1 - H\Delta t)\Phi_{}^n + S_{}^n\Delta t$${{< math >}}
  
 
 其中 ：
 
-\begin{equation}
+{{< math >}}$$
 H\Phi_i \equiv-\frac{1}{{{h^2}}}{(\delta^2\Phi_{}^{})_i}
-\end{equation}
+$${{< math >}}
 
 
 ```matlab
@@ -213,7 +213,7 @@ end
 #### 直接隐式差分
 
  
-\begin{equation}\left[ {\begin{array}{l}
+{{< math >}}$$\left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
 { - r}&{1 + 2r}&{ - r}&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -231,12 +231,12 @@ end
 {...}\\
 {\Phi_{N - 2}^n + S_{N - 2}^n\Delta t}\\
 {\Phi_{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi_N^{n + 1}}
-\end{array}} \right]\end{equation}
+\end{array}} \right]$${{< math >}}
  
 
 用算符表示为：
  
-\begin{equation}\Phi_{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi_{}^n + S_{}^n\Delta t]\end{equation}
+{{< math >}}$$\Phi_{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi_{}^n + S_{}^n\Delta t]$${{< math >}}
  
 
 ```matlab
@@ -274,7 +274,7 @@ end
 #### 平均隐式差分
 
  
-\begin{equation}\left[ {\begin{array}{l}
+{{< math >}}$$\left[ {\begin{array}{l}
 {1 + r}&{ - r/2}&{}&{}&{}\\
 { - r/2}&{1 + r}&{ - r/2}&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -292,13 +292,13 @@ end
 {...}\\
 {\frac{r}{2}\Phi_{N - 1}^n + (1 - r)\Phi_{N - 2}^n + \frac{r}{2}\Phi_{N - 3}^n + S_{N - 2}^n\Delta t}\\
 {\frac{r}{2}\Phi_N^n + (1 - r)\Phi_{N - 1}^n + \frac{r}{2}\Phi_{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi_N^{n + 1}}
-\end{array}} \right]\end{equation}
+\end{array}} \right]$${{< math >}}
  
 
 用算符表示为：
 
  
-\begin{equation}\Phi_{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi_{}^n + S_{}^n\Delta t]\end{equation}
+{{< math >}}$$\Phi_{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi_{}^n + S_{}^n\Delta t]$${{< math >}}
  
 
 ```matlab
@@ -319,35 +319,35 @@ end
 #### 一维薛定谔方程的平均隐式差分
 
  
-\begin{equation}i\hbar \frac{{\partial \phi }}{{\partial t}} =  - \frac{{{\hbar ^2}}}{{2m}}{\nabla ^2}\phi  + V\phi \end{equation}
+{{< math >}}$$i\hbar \frac{{\partial \phi }}{{\partial t}} =  - \frac{{{\hbar ^2}}}{{2m}}{\nabla ^2}\phi  + V\phi $${{< math >}}
  
 
 平均隐式差分为：
 
  
-\begin{equation}\phi^{n + 1} = \left( {\frac{{1 - i\frac{1}{2}H\Delta t}}{{1 + i\frac{1}{2}H\Delta t}}} \right)\phi^n,\quad H=-\frac{\partial ^2}{\partial x^2}+V\end{equation}
+{{< math >}}$$\phi^{n + 1} = \left( {\frac{{1 - i\frac{1}{2}H\Delta t}}{{1 + i\frac{1}{2}H\Delta t}}} \right)\phi^n,\quad H=-\frac{\partial ^2}{\partial x^2}+V$${{< math >}}
  
 
 实际计算时：
 
  
-\begin{equation}\phi_{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi_{}^n \equiv \chi  - \phi_{}^n\end{equation}
+{{< math >}}$$\phi_{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi_{}^n \equiv \chi  - \phi_{}^n$${{< math >}}
  
 
 其中 $\chi$满足：
 
  
-\begin{equation}{\chi_{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi_j} + {\chi_{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi_j^n,j = 1, \cdot  \cdot  \cdot ,N - 1\end{equation}
+{{< math >}}$${\chi_{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi_j} + {\chi_{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi_j^n,j = 1, \cdot  \cdot  \cdot ,N - 1$${{< math >}}
  
 或矩阵形式：
 
 令 ：
  
-\begin{equation}r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} \end{equation}
+{{< math >}}$$r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} $${{< math >}}
  
 
  
-\begin{equation}\left[ {\begin{array}{l}
+{{< math >}}$$\left[ {\begin{array}{l}
 r&1&{}&{}&{}\\
 1&r&1&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -365,7 +365,7 @@ r&1&{}&{}&{}\\
 {...}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 2}^n}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 1}^n + {\chi_{N}}}
-\end{array}} \right]\end{equation}
+\end{array}} \right]$${{< math >}}
  
 
 一维高斯波包初值边界值示例
