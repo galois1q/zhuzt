@@ -1,12 +1,28 @@
-# 常见pde数值算法
+---
+title: '二阶pde算法'
+subtitle: 
+summary: '一些计算物理总结'
+authors:
+  - admin
+tags: [计算物理]
+categories: []
+projects: []
+date: 'today'
+lastMod: 'today'
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
 
 
 ## 二阶偏微分方程分类
 
-$$
+ 
 \begin{equation}
 A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0\end{equation}
-$$
+ 
 
 - 若 $B^2-AC<0$,椭圆型；
 - 若 $B^2-AC=0$,抛物线型；
@@ -22,31 +38,31 @@ $$
 
 主要考虑Poisson方程和Laplace方程:
 
-$$
+ 
 \begin{equation}
 -[\frac{{{\partial ^2}}}{{\partial {x^2}}} + \frac{{{\partial ^2}}}{{\partial {y^2}}}]\phi  = S(x,y)
 \end{equation}
-$$
+ 
 
 
 区域离散化：
-$$
+ 
 \begin{equation}
 -[{\phi _{i + 1,j}} + {\phi _{i - 1,j}} + {\phi _{i,j + 1}} + {\phi _{i,j - 1}} - 4{\phi _{ij}}] = {h^2}{S_{ij}}
 \end{equation}
-$$
+ 
 或表示为：
 
-$$
+ 
 \begin{equation} - [{(\delta _i^2\phi )_{ij}} + {(\delta _j^2\phi )_{ij}}] = {h^2}{S_{ij}}\end{equation}
-$$
+ 
 
-$$
+ 
 \begin{equation}\left\{ \begin{array}{l}
 {(\delta _i^2\phi )_{ij}} \equiv {\phi _{i + 1,j}} + {\phi _{i - 1,j}} - 2{\phi _{ij}}\\
 {(\delta _j^2\phi )_{ij}} \equiv {\phi _{i,j + 1}} + {\phi _{i,j - 1}} - 2{\phi _{ij}}
 \end{array} \right.\end{equation}
-$$
+ 
 
 正方形边界代码示例
 ```matlab
@@ -68,9 +84,9 @@ u(2:N,2:M)=1/(2*pi);% 边界平均值为1/(2*pi)以初始化内点
 
 #### Jacobi迭代法
 
-$$
+ 
 \begin{equation}\varphi _{ij}^{n + 1} =\frac{1}{4}[\varphi _{i - 1,j}^{n} + \varphi _{i + 1,j}^n + \varphi _{i,j - 1}^{n} + \varphi _{i,j + 1}^n + {h^2}S_{ij}^n]\end{equation}
-$$
+ 
 
 ```matlab
 % 正方形边界问题下的jacobi迭代法实现
@@ -90,9 +106,9 @@ fprintf("The iteration number of Jacobi method is：%d\n",iter_num)
 end
 ```
 #### Gauss-Seidal法
-$$
+ 
 \begin{equation}\varphi _{ij}^{n + 1} = (1 - \omega )\varphi _{ij}^n + \frac{\omega }{4}[\varphi _{i - 1,j}^{n + 1} + \varphi _{i + 1,j}^n + \varphi _{i,j - 1}^{n + 1} + \varphi _{i,j + 1}^n + {h^2}S_{ij}^n]\end{equation}
-$$
+ 
 
 其中 $0<\omega<2$，最佳值需要依据情况确定。
 
@@ -130,9 +146,9 @@ end
 主要以扩散方程和含时薛定谔方程为主：
 
 一维扩散方程：
-$$
+ 
 \begin{equation}\frac{{\partial \Phi }}{{\partial t}} = \frac{{{\partial ^2}\Phi }}{{\partial {x^2}}} + S(x,t)\end{equation}
-$$
+ 
 
 一维扩散问题边界示例
 ```matlab
@@ -149,26 +165,26 @@ y((N+1)/2:N,1) = 2*(1-x((N+1)/2:N));
 ```
 
 #### 显式差分
-$$
+ 
 \begin{equation}\Phi _i^{n + 1} = r\Phi _{i + 1}^n + (1 - 2r)\Phi _i^n + r\Phi _{i - 1}^n + S_i^n\Delta t,\quad r=\frac{\Delta t}{h^{2}}\end{equation}
-$$
+ 
 
 只有当 $r<\frac{1}{2}$时算法才稳定。
 
 若记
-$$
+ 
 \begin{equation}{(\delta _{}^2\Phi _{}^n)_i} = \Phi _{i + 1}^n - 2\Phi _i^n + \Phi _{i - 1}^n\end{equation}
-$$
+ 
 
 则显式差分也可写成：
-$$
+ 
 \begin{equation}\Phi _{}^{n + 1} = (1 - H\Delta t)\Phi _{}^n + S_{}^n\Delta t\end{equation}
-$$
+ 
 
 其中 ：
-$$
+ 
 \begin{equation}(H\Phi {\rm{)}}_i^{} \equiv  - \frac{1}{{{h^2}}}{(\delta _{}^2\Phi _{}^{})_i}\end{equation}
-$$
+ 
 
 ```matlab
 %----显式差分-------
@@ -185,7 +201,7 @@ end
 
 #### 直接隐式差分
 
-$$
+ 
 \begin{equation}\left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
 { - r}&{1 + 2r}&{ - r}&{}&{}\\
@@ -205,12 +221,12 @@ $$
 {\Phi _{N - 2}^n + S_{N - 2}^n\Delta t}\\
 {\Phi _{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi _N^{n + 1}}
 \end{array}} \right]\end{equation}
-$$
+ 
 
 用算符表示为：
-$$
+ 
 \begin{equation}\Phi _{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi _{}^n + S_{}^n\Delta t]\end{equation}
-$$
+ 
 
 ```matlab
 %----直接隐式差分----
@@ -246,7 +262,7 @@ end
 
 #### 平均隐式差分
 
-$$
+ 
 \begin{equation}\left[ {\begin{array}{l}
 {1 + r}&{ - r/2}&{}&{}&{}\\
 { - r/2}&{1 + r}&{ - r/2}&{}&{}\\
@@ -266,13 +282,13 @@ $$
 {\frac{r}{2}\Phi _{N - 1}^n + (1 - r)\Phi _{N - 2}^n + \frac{r}{2}\Phi _{N - 3}^n + S_{N - 2}^n\Delta t}\\
 {\frac{r}{2}\Phi _N^n + (1 - r)\Phi _{N - 1}^n + \frac{r}{2}\Phi _{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi _N^{n + 1}}
 \end{array}} \right]\end{equation}
-$$
+ 
 
 用算符表示为：
 
-$$
+ 
 \begin{equation}\Phi _{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi _{}^n + S_{}^n\Delta t]\end{equation}
-$$
+ 
 
 ```matlab
 %---------平均隐式差分-----
@@ -291,35 +307,35 @@ end
 
 #### 一维薛定谔方程的平均隐式差分
 
-$$
+ 
 \begin{equation}i\hbar \frac{{\partial \phi }}{{\partial t}} =  - \frac{{{\hbar ^2}}}{{2m}}{\nabla ^2}\phi  + V\phi \end{equation}
-$$
+ 
 
 平均隐式差分为：
 
-$$
+ 
 \begin{equation}\phi^{n + 1} = \left( {\frac{{1 - i\frac{1}{2}H\Delta t}}{{1 + i\frac{1}{2}H\Delta t}}} \right)\phi^n,\quad H=-\frac{\partial ^2}{\partial x^2}+V\end{equation}
-$$
+ 
 
 实际计算时：
 
-$$
+ 
 \begin{equation}\phi _{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi _{}^n \equiv \chi  - \phi _{}^n\end{equation}
-$$
+ 
 
 其中 $\chi$满足：
 
-$$
+ 
 \begin{equation}{\chi _{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi _j} + {\chi _{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi _j^n,j = 1, \cdot  \cdot  \cdot ,N - 1\end{equation}
-$$
+ 
 或矩阵形式：
 
 令 ：
-$$
+ 
 \begin{equation}r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} \end{equation}
-$$
+ 
 
-$$
+ 
 \begin{equation}\left[ {\begin{array}{l}
 r&1&{}&{}&{}\\
 1&r&1&{}&{}\\
@@ -339,7 +355,7 @@ r&1&{}&{}&{}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi _{N - 2}^n}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi _{N - 1}^n + {\chi _{N}}}
 \end{array}} \right]\end{equation}
-$$
+ 
 
 一维高斯波包初值边界值示例
 ```matlab
