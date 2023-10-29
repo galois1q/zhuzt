@@ -194,7 +194,7 @@ $$
 若记
  
 $$
-{(\delta^2\Phi^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n
+{(\delta^2\Phi^n)_{i}} = \Phi_{i + 1}^{n} - 2\Phi_{i}^{n} + \Phi_{i - 1}^{n}
 $$ 
  
 
@@ -227,7 +227,7 @@ end
 
 #### 直接隐式差分
 
- 
+{{< math >}} 
 $$
 \left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
@@ -249,7 +249,7 @@ $$
 {\Phi_{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi_N^{n + 1}}
 \end{array}} \right]
 $$ 
- 
+{{< /math >}} 
 
 用算符表示为：
  
@@ -319,7 +319,9 @@ $$
 用算符表示为：
 
  
-$$\Phi_{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi_{}^n + S_{}^n\Delta t]$$ 
+$$
+\Phi^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi^n + S^n\Delta t]
+$$ 
  
 
 ```matlab
@@ -340,35 +342,46 @@ end
 #### 一维薛定谔方程的平均隐式差分
 
  
-$$i\hbar \frac{{\partial \phi }}{{\partial t}} =  - \frac{{{\hbar ^2}}}{{2m}}{\nabla ^2}\phi  + V\phi $$ 
+$$
+i\hbar \frac{{\partial \phi }}{{\partial t}} =  - \frac{{{\hbar ^2}}}{{2m}}{\nabla ^2}\phi  + V\phi 
+$$ 
  
 
 平均隐式差分为：
 
  
-$$\phi^{n + 1} = \left( {\frac{{1 - i\frac{1}{2}H\Delta t}}{{1 + i\frac{1}{2}H\Delta t}}} \right)\phi^n,\quad H=-\frac{\partial ^2}{\partial x^2}+V$$ 
+$$
+\phi^{n + 1} = \left( {\frac{{1 - i\frac{1}{2}H\Delta t}}{{1 + i\frac{1}{2}H\Delta t}}} \right)\phi^n,\quad H=-\frac{\partial ^2}{\partial x^2}+V
+$$ 
  
 
 实际计算时：
 
  
- $$\phi_{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi_{}^n \equiv \chi  - \phi_{}^n$$ 
+$$
+\phi_{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi_{}^n \equiv \chi  - \phi_{}^n
+$$ 
  
 
 其中 $\chi$满足：
 
  
-$${\chi_{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi_j} + {\chi_{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi_j^n,j = 1, \cdot  \cdot  \cdot ,N - 1$$ 
+$$
+{\chi_{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi_j} + {\chi_{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi_j^n,j = 1, \cdot  \cdot  \cdot ,N - 1
+$$ 
  
 或矩阵形式：
 
 令 ：
  
-$$r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} $$ 
+$$
+r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} 
+$$ 
  
 
  
-$$\left[ {\begin{array}{l}
+$$
+\left[ {\begin{array}{l}
 r&1&{}&{}&{}\\
 1&r&1&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -386,7 +399,8 @@ r&1&{}&{}&{}\\
 {...}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 2}^n}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 1}^n + {\chi_{N}}}
-\end{array}} \right]$$ 
+\end{array}} \right]
+$$ 
  
 
 一维高斯波包初值边界值示例
