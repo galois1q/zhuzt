@@ -192,11 +192,12 @@ $$
 只有当 $r<\frac{1}{2}$时算法才稳定。
 
 若记
- 
+
+{{< math >}}  
 $$
 {(\delta^2\Phi^n)_{i}} = \Phi_{i + 1}^{n} - 2\Phi_{i}^{n} + \Phi_{i - 1}^{n}
 $$ 
- 
+{{< /math >}}  
 
 则显式差分也可写成：
  
@@ -292,7 +293,7 @@ end
 
 #### 平均隐式差分
 
- 
+{{< math >}}  
 $$
 \left[ {\begin{array}{l}
 {1 + r}&{ - r/2}&{}&{}&{}\\
@@ -314,7 +315,7 @@ $$
 {\frac{r}{2}\Phi_N^n + (1 - r)\Phi_{N - 1}^n + \frac{r}{2}\Phi_{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi_N^{n + 1}}
 \end{array}} \right]
 $$ 
- 
+{{< /math >}}  
 
 用算符表示为：
 
@@ -373,13 +374,14 @@ $$
 或矩阵形式：
 
 令 ：
+
  
 $$
 r=- 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j} 
 $$ 
  
 
- 
+{{< math >}}  
 $$
 \left[ {\begin{array}{l}
 r&1&{}&{}&{}\\
@@ -401,7 +403,7 @@ r&1&{}&{}&{}\\
 {\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 1}^n + {\chi_{N}}}
 \end{array}} \right]
 $$ 
- 
+{{< /math >}}  
 
 一维高斯波包初值边界值示例
 
