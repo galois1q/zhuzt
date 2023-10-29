@@ -194,19 +194,21 @@ $$
 若记
  
 $$
-{(\delta_{}^2\Phi_{}^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n
+{(\delta^2\Phi^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n
 $$ 
  
 
 则显式差分也可写成：
  
-$$\Phi_{}^{n + 1} = (1 - H\Delta t)\Phi_{}^n + S_{}^n\Delta t$$ 
+$$
+\Phi^{n + 1} = (1 - H\Delta t)\Phi^n + S^n\Delta t
+$$ 
  
 
 其中 ：
 
 $$
-H\Phi_i \equiv-\frac{1}{{{h^2}}}{(\delta^2\Phi_{}^{})_i}
+H\Phi_i \equiv-\frac{1}{{{h^2}}}{(\delta^2\Phi)_i}
 $$ 
 
 
@@ -226,7 +228,8 @@ end
 #### 直接隐式差分
 
  
-$$\left[ {\begin{array}{l}
+$$
+\left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
 { - r}&{1 + 2r}&{ - r}&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -244,12 +247,15 @@ $$\left[ {\begin{array}{l}
 {...}\\
 {\Phi_{N - 2}^n + S_{N - 2}^n\Delta t}\\
 {\Phi_{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi_N^{n + 1}}
-\end{array}} \right]$$ 
+\end{array}} \right]
+$$ 
  
 
 用算符表示为：
  
-$$\Phi_{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi_{}^n + S_{}^n\Delta t]$$ 
+$$
+\Phi^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi^n + S^n\Delta t]
+$$ 
  
 
 ```matlab
@@ -287,7 +293,8 @@ end
 #### 平均隐式差分
 
  
-$$\left[ {\begin{array}{l}
+$$
+\left[ {\begin{array}{l}
 {1 + r}&{ - r/2}&{}&{}&{}\\
 { - r/2}&{1 + r}&{ - r/2}&{}&{}\\
 {}& \ddots & \ddots & \ddots &{}\\
@@ -305,7 +312,8 @@ $$\left[ {\begin{array}{l}
 {...}\\
 {\frac{r}{2}\Phi_{N - 1}^n + (1 - r)\Phi_{N - 2}^n + \frac{r}{2}\Phi_{N - 3}^n + S_{N - 2}^n\Delta t}\\
 {\frac{r}{2}\Phi_N^n + (1 - r)\Phi_{N - 1}^n + \frac{r}{2}\Phi_{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi_N^{n + 1}}
-\end{array}} \right]$$ 
+\end{array}} \right]
+$$ 
  
 
 用算符表示为：
