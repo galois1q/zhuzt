@@ -21,7 +21,8 @@ image:
 
  
 \begin{equation}
-A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0\end{equation}
+A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0
+\end{equation}
  
 
 - 若 $B^2-AC<0$,椭圆型；
@@ -48,20 +49,24 @@ A{U_{xx}} + 2B{U_{xy}} + C{U_{yy}} + D{U_x} + E{U_y} + FU = 0\end{equation}
 区域离散化：
  
 \begin{equation}
--[{\phi _{i + 1,j}} + {\phi _{i - 1,j}} + {\phi _{i,j + 1}} + {\phi _{i,j - 1}} - 4{\phi _{ij}}] = {h^2}{S_{ij}}
+-[{\phi_{i + 1,j}} + {\phi_{i - 1,j}} + {\phi_{i,j + 1}} + {\phi_{i,j - 1}} - 4{\phi_{ij}}] = {h^2}{S_{ij}}
 \end{equation}
  
 或表示为：
 
  
-\begin{equation} - [{(\delta _i^2\phi )_{ij}} + {(\delta _j^2\phi )_{ij}}] = {h^2}{S_{ij}}\end{equation}
+\begin{equation} 
+-[{(\delta_i^2\phi )_{ij}} + {(\delta_j^2\phi )_{ij}}] = {h^2}{S_{ij}}
+\end{equation}
  
 
  
-\begin{equation}\left\{ \begin{array}{l}
-{(\delta _i^2\phi )_{ij}} \equiv {\phi _{i + 1,j}} + {\phi _{i - 1,j}} - 2{\phi _{ij}}\\
-{(\delta _j^2\phi )_{ij}} \equiv {\phi _{i,j + 1}} + {\phi _{i,j - 1}} - 2{\phi _{ij}}
-\end{array} \right.\end{equation}
+\begin{equation}
+\begin{array}{l}
+{(\delta_i^2\phi )_{ij}} \equiv {\phi_{i + 1,j}} + {\phi_{i - 1,j}} - 2{\phi_{ij}}\\
+{(\delta_j^2\phi )_{ij}} \equiv {\phi_{i,j + 1}} + {\phi_{i,j - 1}} - 2{\phi_{ij}}
+\end{array} 
+\end{equation}
  
 
 正方形边界代码示例
@@ -85,7 +90,9 @@ u(2:N,2:M)=1/(2*pi);% 边界平均值为1/(2*pi)以初始化内点
 #### Jacobi迭代法
 
  
-\begin{equation}\varphi _{ij}^{n + 1} =\frac{1}{4}[\varphi _{i - 1,j}^{n} + \varphi _{i + 1,j}^n + \varphi _{i,j - 1}^{n} + \varphi _{i,j + 1}^n + {h^2}S_{ij}^n]\end{equation}
+\begin{equation}
+\varphi_{ij}^{n + 1}=\frac{1}{4}[\varphi_{i - 1,j}^{n} + \varphi_{i + 1,j}^n + \varphi_{i,j - 1}^{n} + \varphi_{i,j + 1}^n + {h^2}S_{ij}^n]
+\end{equation}
  
 
 ```matlab
@@ -107,7 +114,9 @@ end
 ```
 #### Gauss-Seidal法
  
-\begin{equation}\varphi _{ij}^{n + 1} = (1 - \omega )\varphi _{ij}^n + \frac{\omega }{4}[\varphi _{i - 1,j}^{n + 1} + \varphi _{i + 1,j}^n + \varphi _{i,j - 1}^{n + 1} + \varphi _{i,j + 1}^n + {h^2}S_{ij}^n]\end{equation}
+\begin{equation}
+\varphi_{ij}^{n + 1} = (1 - \omega )\varphi_{ij}^n + \frac{\omega }{4}[\varphi_{i - 1,j}^{n + 1} + \varphi_{i + 1,j}^n + \varphi_{i,j - 1}^{n + 1} + \varphi_{i,j + 1}^n + {h^2}S_{ij}^n]
+\end{equation}
  
 
 其中 $0<\omega<2$，最佳值需要依据情况确定。
@@ -166,25 +175,27 @@ y((N+1)/2:N,1) = 2*(1-x((N+1)/2:N));
 
 #### 显式差分
  
-\begin{equation}\Phi _i^{n + 1} = r\Phi _{i + 1}^n + (1 - 2r)\Phi _i^n + r\Phi _{i - 1}^n + S_i^n\Delta t,\quad r=\frac{\Delta t}{h^{2}}\end{equation}
+\begin{equation}\Phi_i^{n + 1} = r\Phi_{i + 1}^n + (1 - 2r)\Phi_i^n + r\Phi_{i - 1}^n + S_i^n\Delta t,\quad r=\frac{\Delta t}{h^{2}}\end{equation}
  
 
 只有当 $r<\frac{1}{2}$时算法才稳定。
 
 若记
  
-\begin{equation}{(\delta _{}^2\Phi _{}^n)_i} = \Phi _{i + 1}^n - 2\Phi _i^n + \Phi _{i - 1}^n\end{equation}
+\begin{equation}{(\delta_{}^2\Phi_{}^n)_i} = \Phi_{i + 1}^n - 2\Phi_i^n + \Phi_{i - 1}^n\end{equation}
  
 
 则显式差分也可写成：
  
-\begin{equation}\Phi _{}^{n + 1} = (1 - H\Delta t)\Phi _{}^n + S_{}^n\Delta t\end{equation}
+\begin{equation}\Phi_{}^{n + 1} = (1 - H\Delta t)\Phi_{}^n + S_{}^n\Delta t\end{equation}
  
 
 其中 ：
- 
-\begin{equation}(H\Phi {\rm{)}}_i^{} \equiv  - \frac{1}{{{h^2}}}{(\delta _{}^2\Phi _{}^{})_i}\end{equation}
- 
+
+\begin{equation}
+H\Phi_i \equiv-\frac{1}{{{h^2}}}{(\delta^2\Phi_{}^{})_i}
+\end{equation}
+
 
 ```matlab
 %----显式差分-------
@@ -209,23 +220,23 @@ end
 {}&{}&{ - r}&{1 + 2r}&{ - r}\\
 {}&{}&{}&{ - r}&{1 + 2r}
 \end{array}} \right]\left[ {\begin{array}{l}
-{\Phi _1^{n + 1}}\\
-{\Phi _2^{n + 1}}\\
+{\Phi_1^{n + 1}}\\
+{\Phi_2^{n + 1}}\\
 {\cdots }\\
-{\Phi _{N - 2}^{n + 1}}\\
-{\Phi _{N - 1}^{n + 1}}
+{\Phi_{N - 2}^{n + 1}}\\
+{\Phi_{N - 1}^{n + 1}}
 \end{array}} \right] = \left[ {\begin{array}{l}
-{\Phi _1^n + S_1^n\Delta t + r\Phi _0^{n + 1}}\\
-{\Phi _2^n + S_2^n\Delta t}\\
+{\Phi_1^n + S_1^n\Delta t + r\Phi_0^{n + 1}}\\
+{\Phi_2^n + S_2^n\Delta t}\\
 {...}\\
-{\Phi _{N - 2}^n + S_{N - 2}^n\Delta t}\\
-{\Phi _{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi _N^{n + 1}}
+{\Phi_{N - 2}^n + S_{N - 2}^n\Delta t}\\
+{\Phi_{N - 1}^n + S_{N - 1}^n\Delta t + r\Phi_N^{n + 1}}
 \end{array}} \right]\end{equation}
  
 
 用算符表示为：
  
-\begin{equation}\Phi _{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi _{}^n + S_{}^n\Delta t]\end{equation}
+\begin{equation}\Phi_{}^{n + 1} = \frac{1}{{1 + H\Delta t}}[\Phi_{}^n + S_{}^n\Delta t]\end{equation}
  
 
 ```matlab
@@ -270,24 +281,24 @@ end
 {}&{}&{ - r/2}&{1 + r}&{ - r/2}\\
 {}&{}&{}&{ - r/2}&{1 + r}
 \end{array}} \right]\left[ {\begin{array}{l}
-{\Phi _1^{n + 1}}\\
-{\Phi _2^{n + 1}}\\
+{\Phi_1^{n + 1}}\\
+{\Phi_2^{n + 1}}\\
 {\cdots }\\
-{\Phi _{N - 2}^{n + 1}}\\
-{\Phi _{N - 1}^{n + 1}}
+{\Phi_{N - 2}^{n + 1}}\\
+{\Phi_{N - 1}^{n + 1}}
 \end{array}} \right] = \left[ {\begin{array}{l}
-{\frac{r}{2}\Phi _2^n + (1 - r)\Phi _1^n + \frac{r}{2}\Phi _0^n + S_0^n\Delta t + \frac{r}{2}\Phi _0^{n + 1}}\\
-{\frac{r}{2}\Phi _3^n + (1 - r)\Phi _2^n + \frac{r}{2}\Phi _1^n + S_1^n\Delta t}\\
+{\frac{r}{2}\Phi_2^n + (1 - r)\Phi_1^n + \frac{r}{2}\Phi_0^n + S_0^n\Delta t + \frac{r}{2}\Phi_0^{n + 1}}\\
+{\frac{r}{2}\Phi_3^n + (1 - r)\Phi_2^n + \frac{r}{2}\Phi_1^n + S_1^n\Delta t}\\
 {...}\\
-{\frac{r}{2}\Phi _{N - 1}^n + (1 - r)\Phi _{N - 2}^n + \frac{r}{2}\Phi _{N - 3}^n + S_{N - 2}^n\Delta t}\\
-{\frac{r}{2}\Phi _N^n + (1 - r)\Phi _{N - 1}^n + \frac{r}{2}\Phi _{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi _N^{n + 1}}
+{\frac{r}{2}\Phi_{N - 1}^n + (1 - r)\Phi_{N - 2}^n + \frac{r}{2}\Phi_{N - 3}^n + S_{N - 2}^n\Delta t}\\
+{\frac{r}{2}\Phi_N^n + (1 - r)\Phi_{N - 1}^n + \frac{r}{2}\Phi_{N - 2}^n + S_{N - 1}^n\Delta t + \frac{r}{2}\Phi_N^{n + 1}}
 \end{array}} \right]\end{equation}
  
 
 用算符表示为：
 
  
-\begin{equation}\Phi _{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi _{}^n + S_{}^n\Delta t]\end{equation}
+\begin{equation}\Phi_{}^{n + 1} = \frac{1}{{1 + \frac{1}{2}H\Delta t}}[(1 - \frac{1}{2}H\Delta t)\Phi_{}^n + S_{}^n\Delta t]\end{equation}
  
 
 ```matlab
@@ -320,13 +331,13 @@ end
 实际计算时：
 
  
-\begin{equation}\phi _{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi _{}^n \equiv \chi  - \phi _{}^n\end{equation}
+\begin{equation}\phi_{}^{n + 1} = \left( {\frac{2}{{1 + i\frac{1}{2}H\Delta t}} - 1} \right)\phi_{}^n \equiv \chi  - \phi_{}^n\end{equation}
  
 
 其中 $\chi$满足：
 
  
-\begin{equation}{\chi _{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi _j} + {\chi _{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi _j^n,j = 1, \cdot  \cdot  \cdot ,N - 1\end{equation}
+\begin{equation}{\chi_{j - 1}} + [ - 2 + \frac{{2i{h^2}}}{{\Delta t}} - {h^2}{V_j}]{\chi_j} + {\chi_{j + 1}} = \frac{{4i{h^2}}}{{\Delta t}}\phi_j^n,j = 1, \cdot  \cdot  \cdot ,N - 1\end{equation}
  
 或矩阵形式：
 
@@ -343,17 +354,17 @@ r&1&{}&{}&{}\\
 {}&{}&1&r&1\\
 {}&{}&{}&1&r
 \end{array}} \right]\left[ {\begin{array}{l}
-{{\chi _1}}\\
-{{\chi _2}}\\
+{{\chi_1}}\\
+{{\chi_2}}\\
 {\cdots }\\
-{{\chi _{N - 2}}}\\
-{{\chi _{N - 1}}}
+{{\chi_{N - 2}}}\\
+{{\chi_{N - 1}}}
 \end{array}} \right] = \left[ {\begin{array}{l}
-{\frac{{4i{h^2}}}{{\Delta t}}\phi _1^n{\rm{ - }}{\chi _0}}\\
-{\frac{{4i{h^2}}}{{\Delta t}}\phi _2^n}\\
+{\frac{{4i{h^2}}}{{\Delta t}}\phi_1^n{\rm{ - }}{\chi_0}}\\
+{\frac{{4i{h^2}}}{{\Delta t}}\phi_2^n}\\
 {...}\\
-{\frac{{4i{h^2}}}{{\Delta t}}\phi _{N - 2}^n}\\
-{\frac{{4i{h^2}}}{{\Delta t}}\phi _{N - 1}^n + {\chi _{N}}}
+{\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 2}^n}\\
+{\frac{{4i{h^2}}}{{\Delta t}}\phi_{N - 1}^n + {\chi_{N}}}
 \end{array}} \right]\end{equation}
  
 
