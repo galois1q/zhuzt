@@ -27,9 +27,11 @@ $$
 {{< math >}}
  
 
--  若 $B^2-AC<0$,椭圆型；
--  若 $B^2-AC=0$,抛物线型；
--  若 $B^2-AC>0$,双曲型；
+- 若 $B^2-AC<0$,椭圆型；
+
+- 若 $B^2-AC=0$,抛物线型；
+
+- 若 $B^2-AC>0$,双曲型；
 
 
 ## 边界条件
@@ -76,7 +78,10 @@ $${{</ math >}}
 $${{</ math >}}
  
 
-正方形边界代码示例
+正方形边界代码示例:
+
+<code>
+
 ```matlab
 % 边值条件与初值选取
 xa=0;xb=pi;
@@ -93,6 +98,8 @@ uold=u;
 u(2:N,2:M)=1/(2*pi);% 边界平均值为1/(2*pi)以初始化内点
 
 ```
+</code>
+
 
 #### Jacobi迭代法
 
@@ -103,6 +110,7 @@ $${{</ math >}}
  
 
 ```matlab
+
 % 正方形边界问题下的jacobi迭代法实现
 function usolve=jacobi_iteration(u,uold,N,M,err)
 if nargin <5         
@@ -118,6 +126,7 @@ usolve=u;
 % fprintf("The error of Jacobi method is %f\n",max(max(abs(u-uold))))
 fprintf("The iteration number of Jacobi method is：%d\n",iter_num)
 end
+
 ```
 #### Gauss-Seidal法
  
