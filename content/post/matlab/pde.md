@@ -1,7 +1,7 @@
 ---
 title: '二阶pde数值求解算法'
 subtitle: 
-summary: '一些计算物理总结'
+summary: '计算物理相关总结'
 authors:
   - admin
 tags: [计算物理]
