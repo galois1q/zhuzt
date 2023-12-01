@@ -58,8 +58,28 @@ end
 
 $$\int_a^b {f(x)dx}  = \frac{h}{3}[f(a) + 4\sum\limits_{k = 0}^{n - 1} {f(a + (2k + 1)h)}  + 2\sum\limits_{k = 1}^{n - 1} {f(a + 2kh)}  + f(b)],\quad {{h = (b - a)/2n,\quad }}{x_{k}= a + kh (k = 0,1,...2n)}$$
 
+```matlab
+function F_s=my_simpson(f,x_min,x_max,n)
+h=(x_max-x_min)/n;
+x=x_min:h:x_max;
+yy=f(x);
+F_s=(4*sum(yy(2:2:n))+2*sum(yy(3:2:n-1))+yy(1)+yy(n+1))*h/3;
+end        
+```
+
+
 **3/8 Simpson公式**:采取三阶插值的积分算法,将 $[a,b]$区间 $3n$等分，$h = (b - a)/3n,\quad {x_{k}= a + kh (k = 0,1,...3n)}$,则可得：
 
 $$\int_a^b {f(x)dx}  = \frac{{3h}}{8}[f(a) + 3\sum\limits_{k = 0}^{n - 1} {[f(a + (3k + 1)h)}  + f(a + (3k + 2)h)] + 2\sum\limits_{k = 1}^{n - 1} {f(a + 3kh)}  + f(b)]$$
+
+```matlab
+function F_s=my_simpson(f,x_min,x_max,n)
+h=(x_max-x_min)/n;
+x=x_min:h:x_max;
+y1=f(x);
+F_3 = (3*sum(y1(2:3:n-1))+3*sum(y1(3:3:n))+2*sum(y1(4:3:n-2))+y1(1)+y1(n+1))*h*3/8;
+end        
+```
+
 
 对于无穷区间或边界带奇点的积分，应先将积分变形再进行积分。
