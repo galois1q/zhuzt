@@ -1,5 +1,5 @@
 ---
-title: '数值积分求解算法'
+title: '常微分方程求解算法'
 subtitle: 
 summary: '计算物理相关总结'
 authors:
@@ -13,3 +13,11 @@ image:
   caption: ''
   focal_point: ''
 ---
+
+
+## 常微分方程初值问题
+
+
+## 常微分方程边值问题
+
+## 常微分方程本征值问题
