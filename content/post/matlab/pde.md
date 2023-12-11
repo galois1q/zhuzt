@@ -101,23 +101,21 @@ $$
  
 
 ```matlab
-
 % 正方形边界问题下的jacobi迭代法实现
-function usolve=jacobi_iteration(u,uold,N,M,err)
+function usolve=jacobi_iteration(u,s,h,uold,N,M,err)
 if nargin <5         
     err = 10^-6;
 end  
 iter_num=0;
 while max(max(abs(u-uold)))>=err
       uold=u;
-      u(2:N,2:M)=0.25*(u(3:N+1,2:M)+u(1:N-1,2:M)+u(2:N,3:M+1)+u(2:N,1:M-1));
+      u(2:N,2:M)=0.25*(u(3:N+1,2:M)+u(1:N-1,2:M)+u(2:N,3:M+1)+u(2:N,1:M-1)+h^2*s(2:N,2:M));
       iter_num=iter_num+1;
 end
 usolve=u;
 % fprintf("The error of Jacobi method is %f\n",max(max(abs(u-uold))))
 fprintf("The iteration number of Jacobi method is：%d\n",iter_num)
 end
-
 ```
 #### Gauss-Seidal法
  
@@ -131,7 +129,7 @@ $$
 
 ```matlab
 % 正方形边界问题下的Gauss_Seidel迭代法实现
-function usolve=Gauss_Seidel(u,w,N,M,err)
+function usolve=Gauss_Seidel(u,S,h,w,N,M,err)
 if nargin <5         
     err = 10^-8;
 end    
@@ -143,7 +141,7 @@ while merr>err
         for i=2:N
             for j=2:M
                 %Gauss-Seidel迭代法
-                relax=w/4*(u(i,j+1)+u(i,j-1)+u(i+1,j)+u(i-1,j)-4*u(i,j));
+                relax=w/4*(u(i,j+1)+u(i,j-1)+u(i+1,j)+u(i-1,j)-4*u(i,j)+h^2*S(i,j));
                 u(i,j)=u(i,j)+relax;
                 if abs(relax)>merr
                     merr=abs(relax);
@@ -155,6 +153,7 @@ end
 %  fprintf("The error of Gauss-Seidel method is%f\n",abs(merr))
  fprintf("The iteration number of Gauss-Seidel method is：%d\n",iter_num)
 end  
+
 ```
 
 

@@ -77,7 +77,7 @@ function F_s=my_simpson(f,x_min,x_max,n)
 h=(x_max-x_min)/n;
 x=x_min:h:x_max;
 y1=f(x);
-F_3 = (3*sum(y1(2:3:n-1))+3*sum(y1(3:3:n))+2*sum(y1(4:3:n-2))+y1(1)+y1(n+1))*h*3/8;
+F_s = (3*sum(y1(2:3:n-1))+3*sum(y1(3:3:n))+2*sum(y1(4:3:n-2))+y1(1)+y1(n+1))*h*3/8;
 end        
 ```
 
