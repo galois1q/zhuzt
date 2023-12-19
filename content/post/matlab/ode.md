@@ -65,8 +65,11 @@ $$\frac{dy}{dx}+k^2(x)y=S(x)$$
 
 Numerov算法给出：
 
-$$\begin{array}{l}(1+\frac{h^2}{12}k_{n+1}^2)y_{n+1}-2(1-\frac{5h^2}{12}k_n^2)y_n+(1+\frac{h^2}{12}k_{n-1}^2)y_{n-1} \\
-=\frac{h^2}{12}(S_{n+1}+10S_n+S_{n-1})+O(h^6)\end{array}$$
+$$
+\begin{array}{l}(1+\frac{h^2}{12}k_{n+1}^2)y_{n+1}-2(1-\frac{5h^2}{12}k_n^2)y_n+(1+\frac{h^2}{12}k_{n-1}^2)y_{n-1} \\
+=\frac{h^2}{12}(S_{n+1}+10S_n+S_{n-1})+O(h^6)
+\end{array}
+$$
 
 该方法不能自启动，但对于该形式的微分方程精确度和收敛性都较好。
 
