@@ -107,9 +107,21 @@ end
 $$y^{\prime\prime}+p\left(x\right)y^{\prime}+q\left(x\right)y=f\left(x\right)\\ y\left(a\right)=\alpha，\quad y\left(b\right)=\beta$$
 
 将边值问题分解为两个初值问题解的叠加，分别可四阶RK方法求解：
-$$\begin{array}{l} y_1^{\prime\prime}+p(x)y_1^{\prime}+q(x)y_1=f(x)\\ y_1(a)=\alpha\text{,}\quad y_1^{\prime}(a)=0;\end{array}$$
+$$
+\begin{array}{l} 
+y_1^{\prime\prime}+p(x)y_1^{\prime}+q(x)y_1=f(x)\\ 
+y_1(a)=\alpha\text{,}\quad y_1^{\prime}(a)=0;
+\end{array}
+$$
 
-$$\begin{cases}y_2^{\prime\prime}+p(x)y_2^{\prime}+q(x)y_2=f(x)\\y_2(a)=0\text{,}\quad y_2^{\prime}(a)=1;\end{cases}$$
+$$
+\begin{array}{l} 
+y_2^{\prime\prime}+p(x)y_2^{\prime}+q(x)y_2=f(x)\\
+y_2(a)=0\text{,}\quad y_2^{\prime}(a)=1;
+\end{array}
+$$
+
+
 
 最后原方程的解为：
 $$y(x)=y_1(x)+\frac{\beta-y_1(b)}{y_2(b)}y_2(x)$$
