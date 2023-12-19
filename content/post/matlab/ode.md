@@ -105,11 +105,14 @@ end
 
 只考虑如下二阶线性边值问题：
 
-$$\begin{array}{l} 
+{{< math >}}  
+$$
+\begin{array}{l} 
 {y^{\prime\prime}+p\left(x\right)y^{\prime}+q\left(x\right)y=f\left(x\right)}\\ 
 {y\left(a\right)=\alpha，\quad y\left(b\right)=\beta}
 \end{array}
 $$
+{{< /math >}}  
 
 将边值问题分解为两个初值问题解的叠加，分别可四阶RK方法求解：
 $$
