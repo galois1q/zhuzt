@@ -19,15 +19,18 @@ image:
 
 **Euler法**: 基本只有教学意义的算法；
 
+{{< math >}}  
 $$
 \begin{array}{l}
 {y_{n + 1}} = {y_n} + hf({x_n},{y_n}) + O({h^2}) \\
 y({x_0}) = {y_0}
 \end{array}
 $$
+{{< /math >}}  
 
 **4阶RK法**: 实际最常用的算法，使用需要将微分方程降阶化简；
 
+{{< math >}}  
 $$
 \begin{array}{l}
 {y_{n + 1}} = {y_n} + \frac{h}{6}({K_1} + 2{K_2} + 2{K_3} + {K_4}) + O({h^5})\\
@@ -37,6 +40,8 @@ $$
 {K_4} = f({x_n} + h,{y_n} + h{K_3})
 \end{array}
 $$
+{{< /math >}}  
+
 
 ```matlab
 function y = odeRK4(f,tspan,y0,n) %微分方程df/dt,f为列向量
@@ -65,12 +70,14 @@ $$\frac{dy}{dx}+k^2(x)y=S(x)$$
 
 Numerov算法给出：
 
+{{< math >}}  
 $$
 \begin{array}{l}
 {(1+\frac{h^2}{12}k_{n+1}^2)y_{n+1}-2(1-\frac{5h^2}{12}k_n^2)y_n+(1+\frac{h^2}{12}k_{n-1}^2)y_{n-1}} \\
 {=\frac{h^2}{12}(S_{{n+1}} +{10}S_{n}+S_{n-1})+O(h^6)}
 \end{array}
 $$
+{{< /math >}}  
 
 该方法不能自启动，但对于该形式的微分方程精确度和收敛性都较好。
 
@@ -115,20 +122,24 @@ $$
 {{< /math >}}  
 
 将边值问题分解为两个初值问题解的叠加，分别可四阶RK方法求解：
+
+{{< math >}}  
 $$
 \begin{array}{l} 
 y_1^{\prime\prime}+p(x)y_1^{\prime}+q(x)y_1=f(x)\\ 
 y_1(a)=\alpha\text{,}\quad y_1^{\prime}(a)=0;
 \end{array}
 $$
+{{< /math >}}  
 
+{{< math >}}  
 $$
 \begin{array}{l} 
 y_2^{\prime\prime}+p(x)y_2^{\prime}+q(x)y_2=f(x)\\
 y_2(a)=0\text{,}\quad y_2^{\prime}(a)=1;
 \end{array}
 $$
-
+{{< /math >}}  
 
 
 最后原方程的解为：
@@ -136,11 +147,23 @@ $$y(x)=y_1(x)+\frac{\beta-y_1(b)}{y_2(b)}y_2(x)$$
 
 **打靶法**
 对于如下第一类边界边值问题：
-$$\begin{array}{l}y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\ y\left(a\right)=\alpha,y\left(b\right)=\beta,\end{array}$$
+
+{{< math >}}  
+$$\begin{array}{l}
+y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\ y\left(a\right)=\alpha,y\left(b\right)=\beta,
+\end{array}
+$$
+{{< /math >}}  
 
 将其转化为如下初值问题, 其中 $y'(a)=s_k$:
 
-$$\begin{array}{l}y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\ y\left(a\right)=\alpha,\quad y^{\prime}\left(a\right)=s_k,\end{array}$$
+{{< math >}}  
+$$
+\begin{array}{l}
+y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\ y\left(a\right)=\alpha,\quad y^{\prime}\left(a\right)=s_k,
+\end{array}
+$$
+{{< /math >}}  
 
 需要通过迭代二分求根 $y(b,s_k)=0$确定$s_k$不断改进求解函数, 因而打靶法耗时较长。其他边界条件类似。
 
