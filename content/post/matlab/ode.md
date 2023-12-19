@@ -21,7 +21,7 @@ image:
 
 $$
 \begin{array}{l}
-{y_{n + 1}} = {y_n} + hf({x_n},{y_n}) + O({h^2})\\
+{y_{n + 1}} = {y_n} + hf({x_n},{y_n}) + O({h^2}) \\
 y({x_0}) = {y_0}
 \end{array}
 $$
