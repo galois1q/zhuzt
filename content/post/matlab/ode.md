@@ -61,7 +61,8 @@ $$\frac{dy}{dx}+k^2(x)y=S(x)$$
 
 Numerov算法给出：
 
-$${(1+\frac{h^2}{12}k_{n+1}^2)y_{n+1}-2(1-\frac{5h^2}{12}k_n^2)y_n+(1+\frac{h^2}{12}k_{n-1}^2)y_{n-1}\\=\frac{h^2}{12}(S_{n+1}+10S_n+S_{n-1})+O(h^6)}$$
+$$\begin{array}{l}{(1+\frac{h^2}{12}k_{n+1}^2)y_{n+1}-2(1-\frac{5h^2}{12}k_n^2)y_n+(1+\frac{h^2}{12}k_{n-1}^2)y_{n-1} \\
+=\frac{h^2}{12}(S_{n+1}+10S_n+S_{n-1})+O(h^6)}\end{array}$$
 
 该方法不能自启动，但对于该形式的微分方程精确度和收敛性都较好。
 
@@ -108,11 +109,11 @@ $$y(x)=y_1(x)+\frac{\beta-y_1(b)}{y_2(b)}y_2(x)$$
 
 **打靶法**
 对于如下第一类边界边值问题：
-$$\left.\left\{\begin{aligned}&y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\&y\left(a\right)=\alpha,y\left(b\right)=\beta,\end{aligned}\right.\right.$$
+$$\begin{aligned}&y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\&y\left(a\right)=\alpha,y\left(b\right)=\beta,\end{aligned}$$
 
 将其转化为如下初值问题, 其中 $y'(a)=s_k$:
 
-$$\left.\left\{\begin{aligned}&y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\&y\left(a\right)=\alpha,\quad y^{\prime}\left(a\right)=\color{red}{s_k},\end{aligned}\right.\right.$$
+$$\begin{aligned}&y^{\prime\prime}=f\left(x,y,y^{\prime}\right),\\&y\left(a\right)=\alpha,\quad y^{\prime}\left(a\right)=\color{red}{s_k},\end{aligned}$$
 
 需要通过迭代二分求根 $y(b,s_k)=0$确定$s_k$不断改进求解函数, 因而打靶法耗时较长。其他边界条件类似。
 
