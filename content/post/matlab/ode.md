@@ -1,5 +1,5 @@
 ---
-title: '常微分方程求解算法'
+title: 'ODE求解算法'
 subtitle: 
 summary: '计算物理相关总结'
 authors:
@@ -15,24 +15,24 @@ image:
 ---
 
 
-## 常微分方程初值问题
+### 常微分方程初值问题
 
 **Euler法**: 基本只有教学意义的算法；
 
-$$\left\{ \begin{array}{l}
+$$
 {y_{n + 1}} = {y_n} + hf({x_n},{y_n}) + O({h^2})\\
 y({x_0}) = {y_0}{\rm{ }}
-\end{array} \right.$$
+$$
 
 **4阶RK法**: 实际最常用的算法，使用需要将微分方程降阶化简；
 
-$$\left\{ \begin{array}{l}
+$$
 {y_{n + 1}} = {y_n} + \frac{h}{6}({K_1} + 2{K_2} + 2{K_3} + {K_4}) + O({h^5})\\
 {K_1} = f({x_n},{y_n})\\
 {K_2} = f({x_n} + \frac{h}{2},{y_n} + \frac{h}{2}{K_1})\\
 {K_3} = f({x_n} + \frac{h}{2},{y_n} + \frac{h}{2}{K_2})\\
 {K_4} = f({x_n} + h,{y_n} + h{K_3})
-\end{array} \right.$$
+$$
 
 ```matlab
 function y = odeRK4(f,tspan,y0,n) %微分方程df/dt,f为列向量
@@ -96,7 +96,7 @@ end
 
 只考虑如下二阶线性边值问题：
 
-$$\left.\left\{\begin{array}{l}y^{\prime\prime}+p\left(x\right)y^{\prime}+q\left(x\right)y=f\left(x\right)\\ y\left(a\right)=\alpha，\quad y\left(b\right)=\beta\end{array}\right.\right.$$
+$$y^{\prime\prime}+p\left(x\right)y^{\prime}+q\left(x\right)y=f\left(x\right)\\ y\left(a\right)=\alpha，\quad y\left(b\right)=\beta$$
 
 将边值问题分解为两个初值问题解的叠加，分别可四阶RK方法求解：
 $$\begin{cases}y_1^{\prime\prime}+p(x)y_1^{\prime}+q(x)y_1=f(x)\\y_1(a)=\alpha\text{,}\quad y_1^{\prime}(a)=0;&\end{cases}$$
