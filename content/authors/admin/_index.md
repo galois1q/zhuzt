@@ -18,7 +18,7 @@ organizations:
     url: ''
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am an undergraduated students majoring in physics, now being interested in renormalization group theory,topological order and so on.
+bio: I am an undergraduated students majoring in physics.
 
 interests:
 - Condensed Matter Theory
