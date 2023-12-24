@@ -1,5 +1,5 @@
 ---
-title: 'ODE求解算法'
+title: 'ode求解算法'
 subtitle: 
 summary: '计算物理相关总结'
 authors:

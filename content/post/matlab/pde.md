@@ -229,6 +229,7 @@ end
 
 {{< math >}} 
 $$
+\small
 \left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
 { - r}&{1 + 2r}&{ - r}&{}&{}\\
@@ -241,7 +242,8 @@ $$
 {\cdots }\\
 {\Phi_{N - 2}^{n + 1}}\\
 {\Phi_{N - 1}^{n + 1}}
-\end{array}} \right] = \left[ {\begin{array}{l}
+\end{array}} \right]
+ = \left[ {\begin{array}{l}
 {\Phi_1^n + S_1^n\Delta t + r\Phi_0^{n + 1}}\\
 {\Phi_2^n + S_2^n\Delta t}\\
 {...}\\
@@ -294,6 +296,7 @@ end
 
 {{< math >}}  
 $$
+\tiny
 \left[ {\begin{array}{l}
 {1 + r}&{ - r/2}&{}&{}&{}\\
 { - r/2}&{1 + r}&{ - r/2}&{}&{}\\
