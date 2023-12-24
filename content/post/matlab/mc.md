@@ -208,3 +208,69 @@ Metropolis算法与辐射原理一致，设变量序列 $X\sim w(X)$，应决定
 
 
 
+通常取 $\pi^{(0)}\sim  N(0,1)$，而 $q(x_t\mid x_{t-1})\sim N(x_{t-1},1)$.
+
+```matlab
+
+clear; clc;
+close all;
+
+N=50000;
+a=0;
+b=10;
+w = @(x) (1 + x.^2).^-1;
+xx=mymetro(w,N);
+figure;
+histogram(xx,200,'Normalization','pdf');%绘制 x 的概率密度函数估算值。
+
+
+Num=501;                                                %区间大小
+Max=max(abs(xx))+10^-9;                       %边界
+y=zeros(1,Num-1);
+x=linspace(-Max,Max,Num);
+h=x(2)-x(1);
+for i=1:length(xx)
+    index=fix((xx(i)+Max)/h)+1; %判定xx(i)处于哪个子区间，fix为舍去小数取整运算
+    y(index)=y(index)+1;          %该子区间的随机数数目+1
+end
+figure;bar(x(1:end-1),y); 
+
+
+%精确值绘图
+figure,fplot(w,[-Max,Max],'r');
+hold on;
+S=interg(-Max,Max,w);
+y=y/length(xx)/h*S;  %生成的随机数的数目为n(length(xx))，走的总步数为N
+plot(x(1:Num-1),y,'*');title('验证随机数分布');
+legend('精确分布','随机数分布')
+hold off
+
+
+function S=interg(a,b,w) %w函数在[a,b]上的积分 
+    n=10000;
+    h=(b-a)/n;
+    xx_h=a:h:b;
+    ww=w(xx_h);
+    %S=sum(w(xx_h).*(b-a)/n)-w(a)*(b-a)/2/n-w(b)*(b-a)/2/n; %梯形算法
+    S=(4*sum(ww(2:2:n))+2*sum(ww(3:2:n-1))+ww(1)+ww(n+1))*h/3; %simpson积分公式
+end
+
+function x=mymetro(w,N)
+    x=zeros(1,N);
+    x(1)=randn;%标准正态分布生成初始随机数
+    t = 1; % 抽样编号
+    while t<N
+        t=t+1;
+        %建议采样
+        xs= normrnd(x(t-1) ,1); % 按照建议抽样函数进行采样
+        r=min([1, w(xs)/w(x(t-1))]); % 接受概率
+        %判断是否接受
+        u = rand; % Metropolis 采样的核心部分
+        if u < r
+            x(t) = xs;
+        else
+            x(t) = x(t-1);
+        end  
+    end
+end
+```
