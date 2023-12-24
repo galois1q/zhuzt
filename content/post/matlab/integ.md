@@ -33,7 +33,15 @@ $$l_0(x)=\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}\quad l_1(x)=\frac{(x-x_0)(x-x
 
 $$\phi (x) = \sum\limits_{i = 0}^n {{y_i}{l_i}(x)} $$
 
-$${l_i}(x) = \frac{{(x - {x_0}) \cdots (x - {x_{i - 1}})(x - {x_{i + 1}}) \cdots (x - {x_n})}}{{({x_i} - {x_0}) \cdots ({x_i} - {x_{i - 1}})({x_i} - {x_{i + 1}}) \cdots ({x_i} - {x_n})}} = \frac{{\omega (x)}}{{(x - {x_i})\omega '({x_i})}}$$
+{{< math >}} 
+$$
+\tiny
+\begin{aligned}
+{l_i}(x) &= \frac{{(x - {x_0}) \cdots (x - {x_{i - 1}})(x - {x_{i + 1}}) \cdots (x - {x_n})}}{{({x_i} - {x_0}) \cdots ({x_i} - {x_{i - 1}})({x_i} - {x_{i + 1}}) \cdots ({x_i} - {x_n})}}\\
+& = \frac{{\omega (x)}}{{(x - {x_i})\omega '({x_i})}}    
+\end{aligned}
+$$
+{{< /math >}} 
 
 ### 数值积分公式
 
@@ -56,7 +64,15 @@ end
 
 **复化Simpson公式**: 对 $f(x)$在 $[a,b]$分 $2n$区间每个区间 $[x_i,x_{i+1}]$进行二次插值，可得到如下公式：
 
-$$\int_a^b {f(x)dx}  = \frac{h}{3}[f(a) + 4\sum\limits_{k = 0}^{n - 1} {f(a + (2k + 1)h)}  + 2\sum\limits_{k = 1}^{n - 1} {f(a + 2kh)}  + f(b)],\quad {{h = (b - a)/2n,\quad }}{x_{k}= a + kh (k = 0,1,...2n)}$$
+{{< math >}} 
+$$
+\tiny
+\begin{aligned}
+    \int_a^b {f(x)dx} & = \frac{h}{3}[f(a) + 4\sum\limits_{k = 0}^{n - 1} {f(a + (2k + 1)h)}  + 2\sum\limits_{k = 1}^{n - 1} {f(a + 2kh)}  + f(b)],\\
+    &\quad {{h = (b - a)/2n,\quad }}{x_{k}= a + kh (k = 0,1,...2n)}
+\end{aligned}
+$$
+{{< /math >}} 
 
 ```matlab
 function F_s=my_simpson(f,x_min,x_max,n)

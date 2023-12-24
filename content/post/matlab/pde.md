@@ -229,7 +229,7 @@ end
 
 {{< math >}} 
 $$
-\small
+\tiny
 \left[ {\begin{array}{l}
 {1 + 2r}&{ - r}&{}&{}&{}\\
 { - r}&{1 + 2r}&{ - r}&{}&{}\\
