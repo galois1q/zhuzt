@@ -20,5 +20,3 @@
   [plugins.inputs]
     debug = true
 
-theme = ["hugo-embed-pdf-shortcode", "YourCurrentTheme"]
-enableInlineShortcodes = true
