@@ -76,4 +76,4 @@ $\bra{x}\ket{\psi}$
 
 ## pdf
 
-{{< embed-pdf url="./path/to/pdf/file/example.pdf" >}}
+<!-- {{< embed-pdf url="./path/to/pdf/file/example.pdf" >}} -->
