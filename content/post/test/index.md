@@ -73,7 +73,7 @@ $\bra{x}\ket{\psi}$
 | col 3 is | right-aligned |    $1 |
 
 
-### pdf
+## pdf
 
 ```
 {{ < embed-pdf url="./path/to/your/file.pdf"  > }}
@@ -94,4 +94,4 @@ If you wish to hide the loading spinner use the following attribute
 {{ < embed-pdf url="./path/to/your/file.pdf" hideLoader="true"  > }}
 ```
 
-{{< embed-pdf url="./temmple.pdf" hideLoader="false" hidePaginator="false" >}}
+{{< embed-pdf url="./temple.pdf" hideLoader="false" hidePaginator="false" >}}
