@@ -71,3 +71,27 @@ $\bra{x}\ket{\psi}$
 | col 1 is |  left-aligned | $1600 |
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
+
+
+### pdf
+
+```
+{{ < embed-pdf url="./path/to/your/file.pdf"  > }}
+```
+#### This shortcode loads the first page and displays pagination
+
+#### Hide pagination
+
+If you wish to hide the pagination use the following attribute
+```
+{{ < embed-pdf url="./path/to/your/file.pdf" hidePaginator="true"  > }}
+```
+
+#### Hide loading spinner
+
+If you wish to hide the loading spinner use the following attribute
+```
+{{ < embed-pdf url="./path/to/your/file.pdf" hideLoader="true"  > }}
+```
+
+{{< embed-pdf url="./temmple.pdf" hideLoader="false" hidePaginator="false" >}}
